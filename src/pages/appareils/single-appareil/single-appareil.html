@@ -1,0 +1,18 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-buttons>
+        <button ion-button clear (click)="dismissModal()">Fermer</button>
+      </ion-buttons>
+      <ion-title>{{ appareil.name }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>{{ appareil.name }}</ion-card-header>
+        <ion-card-content>
+          <p *ngFor="let line of appareil.description">{{ line }}</p>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
