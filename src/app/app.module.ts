@@ -1,3 +1,4 @@
+import { OptionsPage } from './../pages/options/options';
 import { TabsPage } from './../pages/tabs/tabs';
 import { SettingsPage } from './../pages/settings/settings';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +11,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AppareilsPage } from '../pages/appareils/appareils';
 import { SingleAppareilPage } from '../pages/appareils/single-appareil/single-appareil';
+import { AppareilServiceProvider } from '../providers/appareil-service/appareil-service';
 
 
 
@@ -20,7 +22,8 @@ import { SingleAppareilPage } from '../pages/appareils/single-appareil/single-ap
     AppareilsPage,
     SettingsPage,
     SingleAppareilPage,
-    TabsPage
+    TabsPage,
+    OptionsPage
     
   ],
   imports: [
@@ -34,13 +37,14 @@ import { SingleAppareilPage } from '../pages/appareils/single-appareil/single-ap
     AppareilsPage,
     SingleAppareilPage,
     SettingsPage,
-    TabsPage
-    
+    TabsPage,
+    OptionsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AppareilServiceProvider
   ]
 })
 export class AppModule {}

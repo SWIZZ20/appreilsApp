@@ -1,34 +1,45 @@
+import { AppareilServiceProvider } from './../../../providers/appareil-service/appareil-service';
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
-
-/**
- * Generated class for the SingleAppareilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Appareils } from '../../../Models/appareils';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'page-single-appareil',
   templateUrl: 'single-appareil.html',
 })
 export class SingleAppareilPage implements OnInit {
-  appareil: {
-    name: string,
-    description: string[]
-  };
+  appareil:Appareils;
 
-  constructor( public navParams: NavParams, public viewCtrl:ViewController) {
+  index:number;
+  constructor( public navParams: NavParams, public viewCtrl:ViewController
+    ,private service: AppareilServiceProvider) {
     
   }
 
   ngOnInit()
   {
-    this.appareil=this.navParams.get('appreil');
+    this.index=this.navParams.get('index');
+    this.appareil=this.service.appareilsList[this.index];
   }
 
   dismissModal() {
     this.viewCtrl.dismiss();
+  }
+  onDeleteHours()
+  {
+    this.appareil.startTime='';
+    this.appareil.endTime='';
+  }
+  onSubmitForm(form:NgForm)
+  {
+    console.log(form.value);
+    this.dismissModal();
+  }
+
+  switchOffOrOn()
+  {
+    this.appareil.isOn=!this.appareil.isOn;
   }
 
 }

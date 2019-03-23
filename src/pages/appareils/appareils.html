@@ -6,14 +6,19 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>appareilsPage</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Appareils</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor='let appareil of appareilsList' 
-      (click)="onLoadAppareil(appareil)">
+    <button icon-start ion-item *ngFor='let appareil of appareilList; let i=index' 
+      (click)="onLoadAppareil(i)">
+      <ion-icon name="power" [color]="appareil.isOn? 'secondary':'danger'"></ion-icon>
       {{appareil.name}}
     </button>
   </ion-list>

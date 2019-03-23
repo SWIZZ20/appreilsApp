@@ -14,5 +14,33 @@
         <ion-card-content>
           <p *ngFor="let line of appareil.description">{{ line }}</p>
         </ion-card-content>
-      </ion-card>
+    </ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button full (click)="switchOffOrOn()" color="secondary" [disabled]="appareil.isOn? true : false">
+              Allumer
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button full (click)="switchOffOrOn()" color="danger" [disabled]="appareil.isOn? false :true ">
+              Eteindre
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  <form #f="ngForm" (ngSubmit)="onSubmitForm(f)" >
+    <ion-list>
+      <ion-item>
+        <ion-label>Heure d'allumage : </ion-label>
+        <ion-datetime displayFormat="HH:mm" name="startTime" [(ngModel)]="appareil.startTime" ></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label>Heure d'extenction : </ion-label>
+          <ion-datetime displayFormat="HH:mm" name="endTime" [(ngModel)]="appareil.endTime" ></ion-datetime>
+        </ion-item>
+    </ion-list>
+    <button type="button" ion-button full color="danger" (click)="onDeleteHours()">Supprimer Horraires</button>
+    <button type="submit" ion-button full color="secondary">Enregistrer Horaire</button>
+  </form>
 </ion-content>
