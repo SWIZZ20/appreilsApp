@@ -1,7 +1,8 @@
+import { AppareilFormPage } from './../appareil-form/appareil-form';
 import { AppareilServiceProvider } from './../../providers/appareil-service/appareil-service';
 import { Appareils } from './../../Models/Appareils';
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ModalController, MenuController } from 'ionic-angular';
+import { IonicPage, NavParams, ModalController, MenuController, NavController } from 'ionic-angular';
 import { SingleAppareilPage } from './single-appareil/single-appareil';
 
 /**
@@ -21,7 +22,8 @@ export class AppareilsPage {
   appareilList:Appareils[];
 
   constructor( public navParams: NavParams,private modalCtrl:ModalController,
-    private serviceAppareil:AppareilServiceProvider, private menuCtrl:MenuController) {
+    private serviceAppareil:AppareilServiceProvider, 
+    private menuCtrl:MenuController, private navCtrl:NavController) {
      
   }
 
@@ -38,6 +40,11 @@ export class AppareilsPage {
   onToggleMenu()
   {
     this.menuCtrl.open();
+  }
+
+  onNewAppareil()
+  {
+    this.navCtrl.push(AppareilFormPage);
   }
   
 }

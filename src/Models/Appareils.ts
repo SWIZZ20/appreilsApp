@@ -12,5 +12,6 @@ export class Appareils
         this.isOn=false;
         this.startTime="";
         this.endTime="";
+        this.description=[];
     }
 }

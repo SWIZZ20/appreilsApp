@@ -43,4 +43,9 @@ export class AppareilServiceProvider {
     console.log('Hello AppareilServiceProvider Provider');
   }
 
+  addAppareil(appareil:Appareils)
+  {
+    this.appareilsList.push(appareil);
+  }
+
 }

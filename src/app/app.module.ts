@@ -1,3 +1,4 @@
+import { AppareilFormPage } from './../pages/appareil-form/appareil-form';
 import { OptionsPage } from './../pages/options/options';
 import { TabsPage } from './../pages/tabs/tabs';
 import { SettingsPage } from './../pages/settings/settings';
@@ -23,7 +24,8 @@ import { AppareilServiceProvider } from '../providers/appareil-service/appareil-
     SettingsPage,
     SingleAppareilPage,
     TabsPage,
-    OptionsPage
+    OptionsPage,
+    AppareilFormPage
     
   ],
   imports: [
@@ -39,6 +41,7 @@ import { AppareilServiceProvider } from '../providers/appareil-service/appareil-
     SettingsPage,
     TabsPage,
     OptionsPage,
+    AppareilFormPage,
   ],
   providers: [
     StatusBar,
