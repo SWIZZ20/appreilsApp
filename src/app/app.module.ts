@@ -1,3 +1,5 @@
+import { AuthServiceProvider } from './../providers/auth-service/auth-service';
+import { AuthPage } from './../pages/auth/auth';
 import { AppareilFormPage } from './../pages/appareil-form/appareil-form';
 import { OptionsPage } from './../pages/options/options';
 import { TabsPage } from './../pages/tabs/tabs';
@@ -8,11 +10,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AppareilsPage } from '../pages/appareils/appareils';
 import { SingleAppareilPage } from '../pages/appareils/single-appareil/single-appareil';
 import { AppareilServiceProvider } from '../providers/appareil-service/appareil-service';
+
 
 
 
@@ -25,7 +29,8 @@ import { AppareilServiceProvider } from '../providers/appareil-service/appareil-
     SingleAppareilPage,
     TabsPage,
     OptionsPage,
-    AppareilFormPage
+    AppareilFormPage,
+    AuthPage
     
   ],
   imports: [
@@ -42,12 +47,14 @@ import { AppareilServiceProvider } from '../providers/appareil-service/appareil-
     TabsPage,
     OptionsPage,
     AppareilFormPage,
+    AuthPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AppareilServiceProvider
+    AppareilServiceProvider,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
