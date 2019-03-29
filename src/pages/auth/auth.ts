@@ -26,7 +26,7 @@ export class AuthPage implements OnInit{
 
   ngOnInit(): void {
     this.initForm();
-   this.mode= this.navParam.get('mode'); 
+    this.mode= this.navParam.get('mode'); 
   }
 
   initForm()

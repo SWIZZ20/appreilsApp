@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Appareils } from '../../Models/appareils';
+import { Subject } from 'rxjs/Subject';
+import * as firebase from 'firebase';
+import DataSnapshot=firebase.database.DataSnapshot;
 
 
 @Injectable()
-export class AppareilServiceProvider {
+export class AppareilServiceProvider  {
+
+  appareils$ = new Subject<Appareils[]>();
 
   appareilsList:Appareils[]=[
     {
@@ -46,6 +51,40 @@ export class AppareilServiceProvider {
   addAppareil(appareil:Appareils)
   {
     this.appareilsList.push(appareil);
+    this.emitAppareils();
+  }
+
+  emitAppareils() {
+    this.appareils$.next(this.appareilsList);
+  }
+
+  saveData()
+  {
+    return new Promise((resolve,rejet)=>
+    {
+      firebase.database().ref('appreils').set(this.appareilsList).then((data: DataSnapshot)=>
+      {
+        resolve(data);
+      }).catch((error)=>{
+        rejet(error);
+      });
+    });
+  }
+
+  getData()
+  {
+    return new Promise((resolve,rejet)=>
+    {
+      firebase.database().ref('appareils').once('value').then((data:DataSnapshot)=>
+      {
+        this.appareilsList=data.val();
+        this.emitAppareils();
+        resolve("données récupérée!");
+      }).then((error)=>{
+        rejet(error);
+      })
+    })
+
   }
 
 }
